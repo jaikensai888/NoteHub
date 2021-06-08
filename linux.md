@@ -33,3 +33,17 @@ unrar e file.rar 解压rar
 unzip file.zip 解压zip
 
 ```
+
+* 查看linux版本
+
+```
+cat /proc/version
+uname -a
+```
+yum install net-tools
+
+如果是centos肯定有yum
+如果是ubuntu那即是apt-get
+如果是alpine那即是apk
+
+rpm 
