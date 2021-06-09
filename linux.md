@@ -1,9 +1,11 @@
 # Linux基础工具安装
 
-## yum安装
+## 版本说明
 
-```
-```
+centos:yum
+ubuntu:apt-get
+alpine:apk
+
 
 ## 命令
 
@@ -40,10 +42,39 @@ unzip file.zip 解压zip
 cat /proc/version
 uname -a
 ```
-yum install net-tools
 
-如果是centos肯定有yum
-如果是ubuntu那即是apt-get
-如果是alpine那即是apk
+* 设置环境变量（全局变量）
 
-rpm 
+```shell
+#
+vi /etc/profile #  全局环境变量
+vi ~/.bash_profile # 用户当前环境变量
+
+export JAVA_HOME=/usr/bin/java # 例子
+
+source ~/.bash_profile # 编写完后需要生成下
+
+echo $JAVA_HOME # 查看是否已经设置成功
+```
+
+## 工具安装与使用
+
+* jdk 安装
+
+详细参考
+>https://www.cnblogs.com/yaun1498078591/p/10368884.html
+
+```shell
+yum search java|grep jdk
+yum install java-1.8.0-openjdk
+yum install java-1.8.0-openjdk-devel.x86_64
+```
+
+* 指令 ifConfig
+
+```shell
+# 安装
+yum install net-tools 
+# 使用
+ifconfig -all  
+````
