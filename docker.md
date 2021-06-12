@@ -41,6 +41,13 @@ docker run -p [port]:[port] [Name]
  docker cp ID全称:容器路径 本地文件路径 
 ```
 
+* 网络
+  
+```shell
+docker network list   # 查看当前network
+docker network inspect bridge # 查看对应network 对应网络的设置
+```
+
 * 提交
 
 ```shell
@@ -118,10 +125,17 @@ route add 172.17.0.0/16 mask 255.255.0.0 172.17.0.1 if 1
 172.17.0.0      255.255.0.0       172.17.0.1        127.0.0.1     76
 一般故障
 
-Docker Desktop for Windows can’t route traffic to Linux containers. However, you can ping the Windows containers
+
 ```
 
 解决方法
-> https://blog.51cto.com/zhongliang/2454181
 
-docker network inspect bridge
+没有办法解决
+
+>https://docs.docker.com/docker-for-windows/networking/
+
+There is no docker0 bridge on Windows
+Because of the way networking is implemented in Docker Desktop for Windows, you cannot see a docker0 interface on the host. This interface is actually within the virtual machine.
+
+I cannot ping my containers
+Docker Desktop for Windows can’t route traffic to Linux containers. However, you can ping the Windows containers.
