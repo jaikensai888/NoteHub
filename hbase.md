@@ -2,7 +2,30 @@
 
 ## 1.安装
 
-TODO：
+* 版本兼容性问题(注意版本)
+
+>http://hbase.apache.org/book.html#java
+
+hbase与jdk
+
+![jdk](/img/hbaseJava.png)
+
+hbase与hadoop
+
+![jdk](/img/hbaseHadoop.png)
+
+* Linux 安装(单机版)
+
+1. 前提JavaSdk已经安装
+2. 安装Hbase  [点击教程](http://hbase.org.cn/docs/32.html)
+
+* windows 安装(单机版)(具麻烦) 请注意版本
+
+1. 先安装Hadoop  [点击教程]( https://blog.csdn.net/weixin_43986204/article/details/90210010)
+
+2. 安装Hbase  [点击教程](http://hbase.org.cn/docs/32.html)
+
+3. 运行Hbase后 可以登录localHost:16030 查看相关信息
 
 ## 2.使用
 
