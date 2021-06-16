@@ -4,7 +4,7 @@
 
 根据官网安装
 
-* 查询镜像
+### 查询镜像
 
 ```js
 docker search [name]
@@ -34,7 +34,7 @@ docker ps -a
 docker run -p [port]:[port] [Name]
 ```
 
-* 文件传输
+*  文件传输
 
 ```shell
  docker cp 本地文件路径 ID全称:容器路径
@@ -60,7 +60,11 @@ docker commit [Name] [NewImageName]
 docker rm [Id]
 ```
 
-* 重新发布
+* 更新配置
+  
+  [更新Docker配置的四种方法](https://bobcares.com/blog/docker-change-container-configuration/)
+
+1. 重新发布
 
 ```shell
 
@@ -132,6 +136,8 @@ route add 172.17.0.0/16 mask 255.255.0.0 172.17.0.1 if 1
 
 没有办法解决
 
+* Windows
+
 >https://docs.docker.com/docker-for-windows/networking/
 
 There is no docker0 bridge on Windows
@@ -139,3 +145,16 @@ Because of the way networking is implemented in Docker Desktop for Windows, you 
 
 I cannot ping my containers
 Docker Desktop for Windows can’t route traffic to Linux containers. However, you can ping the Windows containers.
+
+* MAC
+
+> https://docs.docker.com/docker-for-mac/networking/#there-is-no-docker0-bridge-on-macos
+> 
+There is no docker0 bridge on macOS🔗
+Because of the way networking is implemented in Docker Desktop for Mac, you cannot see a docker0 interface on the host. This interface is actually within the virtual machine.
+
+
+Docker Desktop for Mac can’t route traffic to containers
+
+I cannot ping my containers
+Docker Desktop for Mac can’t route traffic to containers.
