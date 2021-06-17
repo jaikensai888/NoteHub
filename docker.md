@@ -92,7 +92,7 @@ docker run -p centos：centos7
 docker run -itd centos:centos7 /usr/sbin/init
 docker run -dit centos /bin/bash
 docker run -itd --privileged centos:centos7 /usr/sbin/init
-docker run -itd -p 2181:2181 -p 8080:8080 -p 8085:8085 -p 9090:9090 -p 9095:9095 -p 16000:16000 -p 16010:16010 -p 16201:16201 -p 16301:16301 jaikensai888/centos7-hbase-phoenix-lite:v1 /usr/sbin/init
+docker run -itd -p 2181:2181 -p 8080:8080 -p 8085:8085 -p 9090:9090 -p 9095:9095 -p 16000:16000 -p 16010:16010 -p 16201:16201 -p 16301:16301  -p 16030:16030 -p 16020:16020 --name hbase002 jaikensai888/centos7-hbase-phoenix-lite:v1 /usr/sbin/init
 
 
 docker run -itd --name centos7 centos:7

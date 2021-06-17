@@ -1,6 +1,24 @@
 # hbase
 
-## 1.安装
+[top]
+
+## 参考资料
+
+* hbase默认端口
+
+```txt
+16000:hbaseMaster
+16010:hbaseUi
+16020:hbaseRegionServer
+16030:hbaseRegionServerUi
+2181:zooKeeper
+```
+
+* 参考案例
+
+ > https://zhuanlan.zhihu.com/p/166228818 成功案例
+
+## 安装
 
 * 版本兼容性问题(注意版本)
 
@@ -27,7 +45,7 @@ hbase与hadoop
 
 3. 运行Hbase后 可以登录localHost:16030 查看相关信息
 
-## 2.使用
+## 使用
 
 ### hbase shell
 
