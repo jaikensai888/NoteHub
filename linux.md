@@ -104,3 +104,7 @@ vi 文件 ：编辑文件
 :q!退出放弃保存
 :q 退出
 ```
+
+* ssh
+yum  install openssh-clients
+
