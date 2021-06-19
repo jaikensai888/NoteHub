@@ -101,3 +101,10 @@ scan 'tableName'  --全表扫描
 scan 'tableName',{LIMIT=>1} --查询1条数据
 
 ```
+
+## 问题
+Class path contains multiple SLF4J bindings
+
+The authenticity of host '127.0.0.1 (127.0.0.1)' can't be established.
+
+127.0.0.1: Authentication failed
