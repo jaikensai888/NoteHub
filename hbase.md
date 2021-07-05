@@ -100,11 +100,33 @@ scan 'tableName'  --全表扫描
 
 scan 'tableName',{LIMIT=>1} --查询1条数据
 
+scan 'tableName',{COLUMNS=>'',LIMIT=>1,TIMERANGE=>[1600000,1600000]} --查询某列，时间范围的数据
+
 ```
 
+## 总结与理解
+
+Hbase的三大查询索引（行，列，以及TIMESTAMP）
+
+Hbase的储存形式类似与Redis 以KEY与VALUE 形式进行行存储
+
+Hbase的每一Cell 都跟着一个时间；插入时会同时插入；
+
+Hbase的每一个更新，都是旧数据删除，新数据重新插入；
+
+需要活用TIMERANGE，进行持续查询;
+
+Hbase 存在version的概念，与集群同步插入更新使用相关；
+
 ## 问题
-Class path contains multiple SLF4J bindings
 
-The authenticity of host '127.0.0.1 (127.0.0.1)' can't be established.
+  1. Class path contains multiple SLF4J bindings
+  类库冲突，需要删除其中之一的类库
 
-127.0.0.1: Authentication failed
+  1. The authenticity of host '127.0.0.1 (127.0.0.1)' can't be established.
+  不能连接当前host的地址,需要更新host文件，或许处理路由
+
+  1. 127.0.0.1: Authentication failed
+  端口被占用
+
+  1. 关于hbase的二进制编码
