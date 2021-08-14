@@ -1,16 +1,26 @@
-# 第一章 Docker
+# Docker
 
-## 1.1 安装
+##  1、简介
 
-根据官网安装
+> Docker 分成了2个版本Docker CE（免费开发版本） 与Docker EE （企业使用版本）
 
-### 1.1.1 查询镜像
+## 2、安装
+
+> 官网Windows DeskTop 对标DockerCE 使用与Window10
+
+* windowServer 安装教程
+
+  [正式版](https://docs.microsoft.com/zh-cn/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-Server) （只能使用windows容器）
+
+  [预览版](https://bbs.huaweicloud.com/blogs/117189) （才可以切换linux容器与docker容器）
+
+###  2.1、查询镜像
 
 ```js
 docker search [name]
 ```
 
-## 1.2 镜像下载
+##  3、镜像下载
 
 DockerHub
 
@@ -20,48 +30,64 @@ DockerHub
 docker pull centos:7
 ```
 
-## 1.3 功能
+## 4、功能
 
-### 1.3.1 查看运行
+###  4.1、查看运行
 
 ```JS
 docker ps -a
 ```
 
-### 1.3.2 端口映射
+### 4.2、切换内核
+
+> windowServer 只有预览版本可以
+>
+> windows 10  的CE版本可以
+
+```javascript
+切换到Linux内核容器
+>[Environment]::SetEnvironmentVariable("LCOW_SUPPORTED", "1", "Machine")
+>Restart-Service Docker
+
+切换到Windows内核容器
+>[Environment]::SetEnvironmentVariable("LCOW_SUPPORTED", $null, "Machine")
+>Restart-Service Docker
+```
+
+### 4.3、端口映射
 
 ```shell
 docker run -p [port]:[port] [Name]
 ```
 
-### 1.3.3 文件传输
+###  4.4、文件传输
 
 ```shell
  docker cp 本地文件路径 ID全称:容器路径
  docker cp ID全称:容器路径 本地文件路径 
 ```
 
-### 1.3.4 网络
-  
+### 4.5、网络
+
 ```shell
 docker network list   # 查看当前network
 docker network inspect bridge # 查看对应network 对应网络的设置
 ```
 
-### 1.3.5 提交
+### 4.6、提交
 
 ```shell
 docker commit [Name] [NewImageName]
 ```
 
-### 1.3.6 删除
+###  4.7、删除
 
 ```shell
 docker rm [Id]
 ```
 
-### 1.3.7 更新配置
-  
+###  4.8、更新配置
+
   [更新Docker配置的四种方法](https://bobcares.com/blog/docker-change-container-configuration/)
 
 1. 重新发布
@@ -74,9 +100,9 @@ docker rm A #删除原镜像
 docker run -d -p 80:80 --name A imageA #启动新镜像
 ```
 
-## 1.4 问题
+##  5、问题
 
-### 1.4.1 docker容器已启动就结束问题
+### 5.1、docker容器已启动就结束问题
 
 >原因docker 没有执行相关前台运行命令会自动关闭
 
@@ -98,7 +124,7 @@ docker run -itd --privileged -p 2181:2181 -p 8080:8080 -p 8085:8085 -p 9000:9000
 docker run -itd --name centos7 centos:7
 ```
 
-### 1.4.2 docker 宿主机ping不通容器
+### 5.2、docker 宿主机ping不通容器
 
 问题描述
 >前提使用默认模式时：docker 的桥接
@@ -136,7 +162,7 @@ route add 172.17.0.0/16 mask 255.255.0.0 172.17.0.1 if 1
 
 没有办法解决
 
-### 1.4.3 Windows
+###  5.3、Windows
 
 >https://docs.docker.com/docker-for-windows/networking/
 
@@ -146,7 +172,7 @@ Because of the way networking is implemented in Docker Desktop for Windows, you 
 I cannot ping my containers
 Docker Desktop for Windows can’t route traffic to Linux containers. However, you can ping the Windows containers.
 
-### 1.4.4 MAC
+###  5.4、MAC
 
 > https://docs.docker.com/docker-for-mac/networking/#there-is-no-docker0-bridge-on-macos
 > 
