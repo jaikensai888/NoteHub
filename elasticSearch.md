@@ -2,13 +2,23 @@
 
 ## 基础概念
 
+### 检查是否正常安装
+
+http://localhost:9200/?pretty
+
+http://localhost:9200
+
+### 查看当前节点的所有Index
+
+http://localhost:9200/_cat/indices?v
+
 * 端口
 
 9200
 
 * 查看当前节点的所有Index
 
-http://localhost:9200/_cat/indices?v
+
 
 * 查看Index所包含的Type
 

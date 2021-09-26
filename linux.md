@@ -10,14 +10,15 @@ alpine:apk
 
 ## 命令
 
-* ps
+###  程序指令
 
 ```shell
-ps -ef |grep [name]
-kill 进程Id  ：杀死进程
+ps -ef |grep [name] #根据查询运行程序
+ll /proc/PID # 根据Pid查询程序运行绝对路径
+kill 进程Id  #杀死进程
 ```
 
-* 压缩与解压
+### 压缩与解压
 
 ```shell
 --- 压缩
@@ -38,27 +39,27 @@ unzip file.zip 解压zip
 
 ```
 
-* netstat
+### 网络端口
 
 ```shell
 netstat -tunlp ：端口占用情况
 netstat -tlnp | grep :22  ：指定端口查看
 ```
 
-* lsof查看端口进程占用情况
+###  进程端口连接情况
 
 ```shell
-lsof -a -i tcp:7001 -P -R -l
+lsof -a -i tcp:7001 -P -R -l  #查看端口进程占用情况
 ```
 
-* 查看linux版本
+### 查看linux版本
 
 ```shell
 cat /proc/version
 uname -a
 ```
 
-* 设置环境变量（全局变量）
+### 设置环境变量（全局变量）
 
 ```shell
 # 
@@ -70,7 +71,27 @@ export JAVA_HOME=/usr/bin/java # 例子
 source ~/.bash_profile # 生效问题;
 
 echo $JAVA_HOME # 查看是否已经设置成功
+
 ```
+
+### 文件系统
+
+```shell
+find / -name *tomcat*   # 查询文件位置
+```
+
+### 防火墙
+
+```shell
+ iptables -nvL --line-number # 查看防火墙规则
+ iptables -L -n
+ iptables -I IN_public_allow -s 192.168.1.8 -j ACCEPT # 新增防火墙进入规则
+ iptables -I IN_public_allow -s 192.168.1.8 -j ACCEPT
+```
+
+
+
+
 
 ## 工具安装与使用
 
