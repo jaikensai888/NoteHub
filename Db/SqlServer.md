@@ -39,7 +39,6 @@ exec sp_spaceused
 #### 表空间
 
 ```sql
-
 --查询所有表大小，大小倒序排序
 SELECT
 TableName = obj.name,
@@ -71,6 +70,4 @@ SELECT r.session_id as [SessionId], r.command as [Command], sqltext.TEXT, db_nam
 
 ```
 SELECT TOP 50 total_worker_time/execution_count/1000 AS [Avg CPU Time (ms)], SUBSTRING(st.text, (qs.statement_start_offset/2)+1, ((CASE qs.statement_end_offset WHEN -1 THEN DATALENGTH(st.text) ELSE qs.statement_end_offset END - qs.statement_start_offset)/2) + 1) AS Statement, qs.creation_time as CompileTime, qs.last_execution_time as LastExecution, qs.execution_count as ExecutionCount, (qs.total_physical_reads / execution_count) as [Avg Physical Read], (qs.total_logical_reads / execution_count) as [Avg Logical Read], (qs.total_elapsed_time / execution_count / 1000) as [Avg Elapsed Time], (qs.last_physical_reads / execution_count) as [Last Physical Read], (qs.last_logical_reads / execution_count) as [Last Logical Read], (qs.last_elapsed_time / execution_count / 1000) as [Last Elapsed Time], p.query_plan as [Plan] FROM sys.dm_exec_query_stats AS qs CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS st OUTER APPLY sys.dm_exec_query_plan(qs.plan_handle) AS p WHERE qs.last_execution_time > DATEADD(minute, -60, getdate()) ORDER BY [Avg Elapsed Time] DESC;
-
 ```
-

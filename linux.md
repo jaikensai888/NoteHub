@@ -10,7 +10,7 @@ alpine:apk
 
 ## 命令
 
-###  程序指令
+### 程序指令
 
 ```shell
 ps -ef |grep [name] #根据查询运行程序
@@ -36,7 +36,6 @@ tar -xjvf file.tar.bz2   解压 tar.bz2
 tar –xZvf file.tar.Z   解压tar.Z
 unrar e file.rar 解压rar
 unzip file.zip 解压zip
-
 ```
 
 ### 网络端口
@@ -46,7 +45,7 @@ netstat -tunlp ：端口占用情况
 netstat -tlnp | grep :22  ：指定端口查看
 ```
 
-###  进程端口连接情况
+### 进程端口连接情况
 
 ```shell
 lsof -a -i tcp:7001 -P -R -l  #查看端口进程占用情况
@@ -71,7 +70,6 @@ export JAVA_HOME=/usr/bin/java # 例子
 source ~/.bash_profile # 生效问题;
 
 echo $JAVA_HOME # 查看是否已经设置成功
-
 ```
 
 ### 文件系统
@@ -89,16 +87,13 @@ find / -name *tomcat*   # 查询文件位置
  iptables -I IN_public_allow -s 192.168.1.8 -j ACCEPT
 ```
 
-
-
-
-
 ## 工具安装与使用
 
 * jdk 安装
 
 详细参考（验证可行:通常使用jdk8/因为基本兼容）
->https://www.cnblogs.com/yaun1498078591/p/10368884.html
+
+> https://www.cnblogs.com/yaun1498078591/p/10368884.html
 
 ```shell
 yum search java|grep jdk
@@ -113,7 +108,7 @@ yum install java-1.8.0-openjdk-devel.x86_64
 yum install net-tools 
 # 使用
 ifconfig -all  
-````
+```
 
 * vi 工具
 
@@ -127,5 +122,4 @@ vi 文件 ：编辑文件
 ```
 
 * ssh
-yum  install openssh-clients
-
+  yum  install openssh-clients
