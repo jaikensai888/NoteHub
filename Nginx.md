@@ -146,8 +146,6 @@ upstream zhang21（名称）{
     server 192.168.1.22：8888；
     server 192.168.1.33：8888；
 }
-
-
 ```
 
 ### 6.2 权重
@@ -161,8 +159,6 @@ upstream zhang21 {
     server 192.168.1.33 weight=3；
 
 }
-
-
 ```
 
 ### 6.3 ipHash
@@ -176,8 +172,6 @@ upstream zhang21 {
     server 192.168.1.22:8888;
     server 192.168.1.33:9999;
 }
-
-
 ```
 
 ### 6.4 fair
@@ -205,6 +199,4 @@ upstream zhang21 {
     hash_method crc32；
 
 }
-
-
 ```
