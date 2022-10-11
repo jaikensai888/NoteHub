@@ -80,11 +80,49 @@ find / -name *tomcat*   # 查询文件位置
 
 ### 防火墙
 
+firewalld
+
+```shell
+systemctl status firewalld                     #查看firewall防火墙状态
+systemctl start firewalld.service            #打开firewall防火墙
+systemctl stop firewalld.service            #关闭firewall防火墙
+systemctl disable firewalld.service            #禁止firewall开机启动  
+firewall-cmd --query-port=6379/tcp        #查询指定端口是否开启成功
+firewall-cmd --list-ports                    #查看firewall防火墙开放端口
+firewall-cmd --reload                        #重启firewal防火墙
+firewall-cmd --remove-port=123/tcp  --permanent 
+firewall-cmd --zone=public --add-port=80/tcp --permanent 
+
+
+移除指定端口：
+
+命令含义:
+–zone #作用域
+–add-port=80/tcp #添加端口，格式为：端口/通讯协议
+–permanent #永久生效，没有此参数重启后失效
+```
+
+iptable
+
 ```shell
  iptables -nvL --line-number # 查看防火墙规则
  iptables -L -n
  iptables -I IN_public_allow -s 192.168.1.8 -j ACCEPT # 新增防火墙进入规则
  iptables -I IN_public_allow -s 192.168.1.8 -j ACCEPT
+```
+
+### 安全策略
+
+```shell
+setenforce 0 #设置为primission状态
+sestatus #查看状态
+vim /etc/selinux/config
+```
+
+### 查看进程是否运行
+
+```shellsession
+ps -A | grep nginx
 ```
 
 ## 工具安装与使用

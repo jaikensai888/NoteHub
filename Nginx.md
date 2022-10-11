@@ -104,7 +104,7 @@
     }
 ```
 
-## 5.流量复制（windows环境测试不起作用）
+## 5.流量复制
 
 参考文档：[Nginx 流量镜像使用技巧 - 腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1495449)
 
@@ -124,7 +124,7 @@
             mirror /mirror;
             proxy_pass http://192.168.1.85:8091;
         }
-        location /mirror {
+        location = /mirror {
             internal;
             proxy_pass http://app.jetone.cn:8113$request_uri;
         }
@@ -200,3 +200,43 @@ upstream zhang21 {
 
 }
 ```
+
+## 7. linux上的问题
+
+```shell
+nginx: [emerg] bind() to 0.0.0.0:8089 failed (13: Permission denied)
+
+yum provides semanage
+yum -y install policycoreutils-python.x86_64
+semanage port -a -t http_port_t -p tcp 8090 
+```
+
+* 增加端口权限
+  
+  ```shell
+  semanage port -a -t http_port_t -p tcp 8090
+  ```
+
+* 查看端口权限
+  
+  ```shell
+  semanage port -l | grep http_port_t
+  ```
+
+* 查看linux 是否运行
+  
+  ```shell
+  ps -A | grep nginx
+  ```
+
+* 查看端口占用
+  
+  ```shell
+  netstat -tunlp | grep 端口号
+  ```
+
+* 查看防火墙
+  
+  ```shell
+  firewall-cmd --list-ports
+  ```
